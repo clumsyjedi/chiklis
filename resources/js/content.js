@@ -1,0 +1,1 @@
+chiklis.content.init();
