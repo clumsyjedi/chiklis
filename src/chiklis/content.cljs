@@ -1,6 +1,7 @@
 (ns chiklis.content
   (:require [khroma.log :as console]
-            [clojure.string :as s])
+            [clojure.string :as s]
+            [chiklis.mutant :refer [observe-page]])
   (:require-macros [dommy.macros :refer [sel1]]))
 
 (defn- chiklisable? [node]
@@ -16,6 +17,7 @@
 
 
 (defn init []
+  (observe-page)
   (chiklisify (sel1 :body) 
               (fn [n] 
                 (set! (.-textContent n) (s/replace (.-textContent n) 
